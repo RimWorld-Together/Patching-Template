@@ -1,34 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Shared;
+﻿using Shared;
+
+// MAKE SURE THE NAMESPACE OF THIS CLASS IS GameServer.
+
 namespace GameServer
 {
     public static class CommandStorage
     {
-        private static readonly ServerCommand sendTestMessage = new ServerCommand("sendtestpacket", 2, //We make a new command with the name sendtestpacket that takes 2 argument
-        "Send a test packet. Takes an user and a message as arguments", //Description
-        SendTestMessageAction); //Action to execute
+        // We make a new command with the name "sendtestpacket" that takes 2 arguments.
+        // The function "SendTestMessageAction" will be executed as the command action.
 
-        public static List<ServerCommand> serverCommands = new List<ServerCommand> //All commands in here will be sent to the server when loading your assembly
+        private static readonly ServerCommand sendTestMessageCommand = new ServerCommand("sendtestpacket", 2, 
+            "Send a test packet. Takes an user and a message as arguments",
+            SendTestMessageAction);
+
+        // All commands listed in here will be added to the server the moment the assembly loads.
+
+        public static readonly List<ServerCommand> serverCommands = new List<ServerCommand>
         {
-            sendTestMessage
+            sendTestMessageCommand
         };
+
+        // This is the action that the "sendtestpacket" command will execute.
 
         public static void SendTestMessageAction() 
         {
-            ExamplePacket data = new ExamplePacket(); //We make a new object to put inside our packet
-            string username = CommandManager.commandParameters[0]; //We grab the first argument
-            data._toLog = CommandManager.commandParameters[1]; //We grab the second argument
-            ServerClient client = Network.connectedClients.Where(S => S.userFile.Username == username).FirstOrDefault(); //We check if the user is connected and grab his client
-            if (client == null)
-            {
-                Logger.Error($"Specified user did not exist");
-                return;
-            }
-            ExampleManager.SendExamplePacket(data, client);
+            // We make a new "ExampleData" instance to put inside our packet.
+
+            ExampleData data = new ExampleData();
+
+            // We grab the first argument passed by the command.
+
+            string username = CommandManager.commandParameters[0]; 
+
+            // We grab the second argument passed by the command.
+
+            data._toLog = CommandManager.commandParameters[1];
+
+            // In this case, since we need a client for this command, we search it and send the command if found.
+
+            ServerClient toFind = NetworkHelper.GetConnectedClientFromUsername(username);
+            if (toFind == null) Logger.Error($"Specified user did not exist");
+            else ExampleManager.SendExamplePacket(data, toFind);
         }
     }
 }

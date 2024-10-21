@@ -1,32 +1,43 @@
 ﻿using Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GameServer //Make sure the namespace is exactly GameServer
+// MAKE SURE THE NAMESPACE OF THE MANAGERS IS GameServer for the SERVER
+
+namespace GameServer
 {
     public static class ExampleManager
     {
-        public static void ParsePacket(Packet packet) //This function is the entry point of packets
+        // This function (ParsePacket) is the one in charge of automatically executing the code that gets sent to your managers.
+        // In the SERVER, if must only accept the ServerClient and Packet classes as the parameters.
+
+        public static void ParsePacket(ServerClient client, Packet packet)
         {
-            ExamplePacket example = Serializer.ConvertBytesToObject<ExamplePacket>(packet.contents); //We use this function to convert our packet into an object
-            Logger.Error(example._toLog);
+            // The Serializer.ConvertBytesToObject(packet.contents) function returns the object that was sent over the network.
+            // Make sure you are parsing the correct object that it's expected, otherwise it will throw an exception.
+            // In this case, ExampleData is expected so we parse it to that class.
+
+            ExampleData data = Serializer.ConvertBytesToObject<ExampleData>(packet.contents);
+
+            // For testing purposes, we log the content of this specific packet.
+
+            Logger.Warning(data._toLog);
         }
 
-        public static void SendExamplePacket(ExamplePacket data, ServerClient client)
+        public static void SendExamplePacket(ExampleData data, ServerClient client)
         {
-            ModdedData moddedData = new ModdedData(Assembly.GetCallingAssembly().GetName().Name); //We tell the packet what assembly to look for.
-            //To target the Rimworld Together assembly, simple put "GameClient or "GameServer"
-            Packet packet = Packet.CreatePacketFromObject( //We use this function to create a packet out of an object
-                nameof(ExampleManager), //Name of the manager you want to reach on the other side.
-                data, //The actual data to pass.
-                false, //Should reserve the main thread. This is rarely required.
-                moddedData); //By default, if left empty, it will target an assembly with the same name as the current one.
-            client.listener.EnqueuePacket(packet); //We send the packet to the client we grabbed earlier
+            // TODO
+            // DOCUMENT THIS PART
+
+            ModdedData moddedData = new ModdedData(Assembly.GetCallingAssembly().GetName().Name);
+
+            // We create the packet we want to send using this function.
+            // We pass it the manager in charge of it and the data that it needs to carry.
+
+            Packet packet = Packet.CreatePacketFromObject(nameof(ExampleManager), data);
+
+            // Finally, we enqueue it in the listener so it gets automatically sent.
+
+            client.listener.EnqueuePacket(packet);
         }
     }
 }
