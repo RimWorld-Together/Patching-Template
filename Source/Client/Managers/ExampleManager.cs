@@ -25,15 +25,10 @@ namespace GameClient
 
         public static void SendExamplePacket(ExampleData data)
         {
-            // TODO
-            // DOCUMENT THIS PART
-
-            ModdedData moddedData = new ModdedData(Assembly.GetCallingAssembly().GetName().Name);
-
             // We create the packet we want to send using this function.
             // We pass it the manager in charge of it and the data that it needs to carry.
 
-            Packet packet = Packet.CreatePacketFromObject(nameof(ExampleManager), data);
+            Packet packet = Packet.CreateModdedPacketFromObject(nameof(ExampleManager), data);
 
             // Finally, we enqueue it in the listener so it gets automatically sent.
 

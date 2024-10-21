@@ -25,11 +25,6 @@ namespace GameServer
 
         public static void SendExamplePacket(ExampleData data, ServerClient client)
         {
-            // TODO
-            // DOCUMENT THIS PART
-
-            ModdedData moddedData = new ModdedData(Assembly.GetCallingAssembly().GetName().Name);
-
             // We create the packet we want to send using this function.
             // We pass it the manager in charge of it and the data that it needs to carry.
 
