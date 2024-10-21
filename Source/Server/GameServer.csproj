@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>GameServer</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DebugType>full</DebugType>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Mono.Nat" Version="3.0.4" />
+      <PackageReference Include="System.Security.Permissions" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="GameServer">
+        <HintPath>..\..\..\Rimworld-Together\Source\Server\bin\Debug\net8.0\GameServer.dll</HintPath>
+        <Private>False</Private>
+      </Reference>
+    </ItemGroup>
+	
+    <Import Project="..\Shared\Shared.projitems" Label="Shared" />
+</Project>
