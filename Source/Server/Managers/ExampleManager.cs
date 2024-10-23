@@ -1,9 +1,7 @@
-﻿using Shared;
-using System.Reflection;
+﻿using GameServer;
+using Shared;
 
-// MAKE SURE THE NAMESPACE OF THE MANAGERS IS GameServer for the SERVER
-
-namespace GameServer
+namespace ServerPatch
 {
     public static class ExampleManager
     {

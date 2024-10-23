@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <RootNamespace>GameClient</RootNamespace>
+    <RootNamespace>ClientPatch</RootNamespace>
     <Nullable>enable</Nullable>
     <LangVersion>9</LangVersion>
   </PropertyGroup>

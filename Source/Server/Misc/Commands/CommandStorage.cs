@@ -1,9 +1,11 @@
-﻿using Shared;
+﻿using GameServer;
+using ServerPatch;
+using Shared;
 
-// MAKE SURE THE NAMESPACE OF THIS CLASS IS GameServer.
-
-namespace GameServer
+namespace ServerPatch
 {
+    // MAKE SURE THIS CLASS IS ALWAYS NAMED 'CommandStorage'.
+
     public static class CommandStorage
     {
         // We make a new command with the name "sendtestpacket" that takes 2 arguments.
@@ -13,6 +15,7 @@ namespace GameServer
             "Send a test packet. Takes an user and a message as arguments",
             SendTestMessageAction);
 
+        // MAKE SURE THIS FIELD IS ALWAYS NAMED 'serverCommands'.
         // All commands listed in here will be added to the server the moment the assembly loads.
 
         public static readonly List<ServerCommand> serverCommands = new List<ServerCommand>
@@ -39,7 +42,7 @@ namespace GameServer
             // In this case, since we need a client for this command, we search it and send the command if found.
 
             ServerClient toFind = NetworkHelper.GetConnectedClientFromUsername(username);
-            if (toFind == null) Logger.Error($"Specified user did not exist");
+            if (toFind == null) Logger.Error($"User '{username}' did not exist");
             else ExampleManager.SendExamplePacket(data, toFind);
         }
     }

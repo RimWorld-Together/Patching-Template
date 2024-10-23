@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
+using GameClient;
 using Shared;
 
-namespace GameClient
+namespace ClientPatch
 {
     // This class is the entry point for your CLIENT patch.
     // It will start executing the moment the mod loads in the game.

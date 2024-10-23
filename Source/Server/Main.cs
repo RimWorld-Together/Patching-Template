@@ -1,7 +1,8 @@
 ﻿using System.Reflection;
+using GameServer;
 using Shared;
 
-namespace GameServer
+namespace ServerPatch
 {
     // This class is the entry point for your SERVER patch.
     // It will start executing the moment the mod loads in the game.

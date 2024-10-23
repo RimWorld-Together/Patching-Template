@@ -1,9 +1,7 @@
-﻿using Shared;
-using System.Reflection;
+﻿using GameClient;
+using Shared;
 
-// MAKE SURE THE NAMESPACE OF THE MANAGERS IS GameClient for the CLIENT
-
-namespace GameClient
+namespace ClientPatch
 {
     public static class ExampleManager
     {
