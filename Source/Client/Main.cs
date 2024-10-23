@@ -2,7 +2,7 @@
 using GameClient;
 using Shared;
 
-namespace ClientPatch
+namespace RTPatch
 {
     // This class is the entry point for your CLIENT patch.
     // It will start executing the moment the mod loads in the game.

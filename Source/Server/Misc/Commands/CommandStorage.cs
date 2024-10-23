@@ -1,8 +1,7 @@
 ﻿using GameServer;
-using ServerPatch;
 using Shared;
 
-namespace ServerPatch
+namespace RTPatch
 {
     // MAKE SURE THIS CLASS IS ALWAYS NAMED 'CommandStorage'.
 

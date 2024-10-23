@@ -2,10 +2,11 @@
 
     <PropertyGroup>
         <OutputType>Library</OutputType>
+        <RootNamespace>RTPatch</RootNamespace>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>GameServer</RootNamespace>
+        <TargetName>RTPatch</TargetName>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

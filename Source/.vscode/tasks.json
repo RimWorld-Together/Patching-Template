@@ -4,7 +4,7 @@
 		{
 			"label": "dotnet: build client",
 			"type": "dotnet",
-			"task": "build ${workspaceFolder}/Client/ClientPatch.csproj -o ${workspaceFolder}/Client/bin/Debug/Net8.0",
+			"task": "build ${workspaceFolder}/Client/RTPatch.csproj -o ${workspaceFolder}/Client/bin/Debug/Net8.0",
 			"group": "build",
 			"problemMatcher": [],
 		},
@@ -12,7 +12,7 @@
 		{
 			"label": "dotnet: build server",
 			"type": "dotnet",
-			"task": "build ${workspaceFolder}/Server/ServerPatch.csproj -o ${workspaceFolder}/Server/bin/Debug/Net8.0",
+			"task": "build ${workspaceFolder}/Server/RTPatch.csproj -o ${workspaceFolder}/Server/bin/Debug/Net8.0",
 			"group": "build",
 			"problemMatcher": [],
 		}

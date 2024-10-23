@@ -1,12 +1,13 @@
-﻿using GameServer;
+﻿using System.Reflection;
+using GameServer;
 using Shared;
 
-namespace ServerPatch
+namespace RTPatch
 {
     public static class ExampleManager
     {
         // This function (ParsePacket) is the one in charge of automatically executing the code that gets sent to your managers.
-        // In the SERVER, if must only accept the ServerClient and Packet classes as the parameters.
+        // In the SERVER, it must ONLY accept the ServerClient and Packet classes as the parameters.
 
         public static void ParsePacket(ServerClient client, Packet packet)
         {
@@ -25,8 +26,9 @@ namespace ServerPatch
         {
             // We create the packet we want to send using this function.
             // We pass it the manager in charge of it and the data that it needs to carry.
+            // Don't forget to specify that the assembly you are targetting is the one you are currently creating
 
-            Packet packet = Packet.CreatePacketFromObject(nameof(ExampleManager), data);
+            Packet packet = Packet.CreateModdedPacketFromObject(nameof(ExampleManager), MethodManager.GetAssemblyName(Assembly.GetExecutingAssembly()), data);
 
             // Finally, we enqueue it in the listener so it gets automatically sent.
 

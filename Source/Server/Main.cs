@@ -2,7 +2,7 @@
 using GameServer;
 using Shared;
 
-namespace ServerPatch
+namespace RTPatch
 {
     // This class is the entry point for your SERVER patch.
     // It will start executing the moment the mod loads in the game.
