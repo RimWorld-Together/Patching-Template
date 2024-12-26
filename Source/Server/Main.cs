@@ -2,6 +2,8 @@
 using GameServer;
 using Shared;
 
+// You need to clone Rimworld-Together, and put Boilerplate in the same folder, as Rimworld-Together
+
 namespace RTPatch
 {
     // This class is the entry point for your SERVER patch.
