@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <Reference Include="GameClient">
-      <HintPath>..\..\..\Rimworld-Together\Source\Client\bin\Debug\net472\GameClient.dll</HintPath>
+      <HintPath>..\..\..\Rimworld-Together\Source\Client\bin\Release\net472\GameClient.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
