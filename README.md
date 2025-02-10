@@ -1,5 +1,5 @@
-# RT-Patching-Boilerplate
-## A template for adding compatibilities into RimWorld Together
+# RimWorld Together Patching Template
+## A template for adding compatibilities & expansions into RimWorld Together
 
 > [!NOTE]
 > This template is currently a work in progress! Please report any broken stuff you find!
